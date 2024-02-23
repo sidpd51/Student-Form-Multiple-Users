@@ -1,15 +1,4 @@
-let users = [
-    {
-        id:1,
-        commonInfo: {
-            firstName: "sid",
-            lastName: "pd",
-            email: "sidpd",
-            dob: "apple",
-            graduation: 'dfadsf'
-        }
-    }
-];
+let users = [];
 
 
 const tbody = document.getElementById('tbody')
@@ -37,7 +26,7 @@ const tbodyModal = document.getElementById('tbody-modal')
 //     })
 // };
 
-renderUsers()
+
 
 function renderUsers(){
     // Your code to render something goes here
@@ -45,21 +34,23 @@ function renderUsers(){
     
     users.forEach(user=>{
 
-        let commonInfo = user.commonInfo;
-
         html+=
-        `<th scope="row">${user.id}</th>
-        <td>${commonInfo.firstName}</td>
-        <td>${commonInfo.lastName}</td>
-        <td>${commonInfo.email}</td>
-        <td>${commonInfo.dob}</td>
-        <td>${commonInfo.graduation}</td>
-        <td><button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye fa-xl"></i></button></td>
-        <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger"></i></button></td>
+        `<tr>
+            <th scope="row">${user.userId}</th>
+            <td>${user.fname}</td>
+            <td>${user.lname}</td>
+            <td>${user.email}</td>
+            <td>${user.dob}</td>
+            <td>${user.graduation}</td>
+            <td><button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye fa-xl"></i></button></td>
+            <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger"></i></button></td>
+        </tr>
         `
         tbody.innerHTML= html;
     })
 }
+
+renderUsers()
 
 const plusBtn = document.querySelector('.plus-btn')
 const minusBtn = document.querySelector('.minus-btn')
@@ -96,14 +87,19 @@ document.addEventListener('click', function (event) {
 
 let userId=1;
 
-function addUser(userId){
-    const fname = document.getElementById('fname')
-    const lname = document.getElementById('lname')
-    const dob = document.getElementById('dob')
-    const email = document.getElementById('email')
-    const address = document.getElementById('address')
-    const graduation = document.getElementById('graduation-year')
+let createUserForm = document.querySelector('.create')
 
+createUserForm.addEventListener('click', function(event){
+    userId=addUser(userId)
+})
+
+function addUser(userId){
+    const fname = document.getElementById('fname').value
+    const lname = document.getElementById('lname').value
+    const dob = document.getElementById('dob').value
+    const email = document.getElementById('email').value
+    const address = document.getElementById('address').value
+    const graduation = document.getElementById('graduation').value
 
     const user = {
         userId,
@@ -117,6 +113,10 @@ function addUser(userId){
 
     users.push(user);
     userId++;
+
+    renderUsers()
+
+    return userId;
 }
 
 function removeUser(userId){
@@ -124,7 +124,7 @@ function removeUser(userId){
     users = users.filter(user=> user.id!=userId)
 }
 
-function readUser(userId){
+function viewUser(userId){
 
     const viewUser = users.filter(user=> user.id==userId);
     document.getElementById('fname').innerHTML=viewUser.fname;
