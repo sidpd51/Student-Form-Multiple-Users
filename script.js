@@ -7,6 +7,7 @@ const tbodyModal = document.getElementById('tbody-modal')
 tbody.addEventListener('click', function(event){
 
     let target = event.target;
+    console.log(target)
     let tr = target.closest('tr')
 
     if(!tr) return;
@@ -16,7 +17,15 @@ tbody.addEventListener('click', function(event){
     let th = tr.querySelector('th')
     let id = parseInt(th.innerHTML)
     // console.log(id)
-    visitUser(id)
+    console.log(users)
+    if(target.classList.contains('delete-icon')){
+        console.log('inside delete')
+        removeUser(id)
+        console.log(users)
+    }else {
+        visitUser(id)
+        console.log('inside view')
+    }
 })
 
 function visitUser(id){
@@ -31,9 +40,13 @@ function visitUser(id){
     document.getElementById('email').value=viewUser.email;
     document.getElementById('address').value=viewUser.address;
     document.getElementById('graduation').value=viewUser.graduation;
-
 }
 
+function removeUser(id){
+    // modal bootstrap
+    users = users.filter(user=> user.userId!=id)
+    renderUsers()
+}
 
 
 function renderUsers(){
@@ -51,7 +64,7 @@ function renderUsers(){
             <td>${user.dob}</td>
             <td>${user.graduation}</td>
             <td><button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye fa-xl"></i></button></td>
-            <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger"></i></button></td>
+            <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger delete-icon"></i></button></td>
         </tr>
         `
         tbody.innerHTML= html;
@@ -127,10 +140,7 @@ function addUser(userId){
     return userId;
 }
 
-function removeUser(userId){
-    // modal bootstrap
-    users = users.filter(user=> user.id!=userId)
-}
+
 
 function updateUser(userId){
     const updatedFname = document.getElementById('fname');
