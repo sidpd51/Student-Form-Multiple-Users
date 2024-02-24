@@ -4,27 +4,35 @@ let users = [];
 const tbody = document.getElementById('tbody')
 const tbodyModal = document.getElementById('tbody-modal')
 
-// window.onload = function() {
-//     // Your code to render something goes here
-//     let html =''
-    
-//     users.forEach(user=>{
+tbody.addEventListener('click', function(event){
 
-//         let commonInfo = user.commonInfo;
+    let target = event.target;
+    let tr = target.closest('tr')
 
-//         html+=
-//         `<th scope="row">${user.id}</th>
-//         <td>${commonInfo.firstName}</td>
-//         <td>${commonInfo.lastName}</td>
-//         <td>${commonInfo.email}</td>
-//         <td>${commonInfo.dob}</td>
-//         <td>${commonInfo.graduation}</td>
-//         <td><button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye fa-xl"></i></button></td>
-//         <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger"></i></button></td>
-//         `
-//         tbody.innerHTML= html;
-//     })
-// };
+    if(!tr) return;
+
+    if(!tbody.contains(tr)) return;
+
+    let th = tr.querySelector('th')
+    let id = parseInt(th.innerHTML)
+    // console.log(id)
+    visitUser(id)
+})
+
+function visitUser(id){
+
+    let viewUser = users.filter(user=> user.userId==id);
+    viewUser= viewUser[0]
+    // console.log(users)
+    // console.log(viewUser)
+    document.getElementById('fname').value=viewUser.fname;
+    document.getElementById('lname').value=viewUser.lname;
+    document.getElementById('dob').value=viewUser.dob;
+    document.getElementById('email').value=viewUser.email;
+    document.getElementById('address').value=viewUser.address;
+    document.getElementById('graduation').value=viewUser.graduation;
+
+}
 
 
 
@@ -122,19 +130,6 @@ function addUser(userId){
 function removeUser(userId){
     // modal bootstrap
     users = users.filter(user=> user.id!=userId)
-}
-
-function viewUser(userId){
-
-    const viewUser = users.filter(user=> user.id==userId);
-    document.getElementById('fname').innerHTML=viewUser.fname;
-    document.getElementById('lname').innerHTML=viewUser.lname;
-    document.getElementById('dob').innerHTML=viewUser.dob;
-    document.getElementById('email').innerHTML=viewUser.email;
-    document.getElementById('address').innerHTML=viewUser.address;
-    document.getElementById('graduation').innerHTML=viewUser.graduation;
-
-    console.log(viewToUser)
 }
 
 function updateUser(userId){
