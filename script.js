@@ -102,6 +102,10 @@ let createForm = document.getElementById('create-form')
 
 createForm.addEventListener('click', function(event){
     isUpdating=false
+
+    // let updateToggle = document.getElementById('dualActionBtn')
+    // updateToggle.removeAttribute('data-bs-dismiss')
+
     if(!isUpdating){
         document.getElementById('dualActionBtn').innerHTML= "Create";
     }
@@ -110,12 +114,22 @@ createForm.addEventListener('click', function(event){
 })
 
 toggleUpdate.addEventListener('click', function(event){
-    if(isUpdating){
-        console.log('on update function')
-        updateUser(currentId)
-    }else{
-        userId=addUser(userId)
-        console.log('on add function')
+    console.log(event.target)
+    if(validateForm()){
+
+        
+
+        console.log(event.target)
+        if(isUpdating){
+            console.log('on update function');
+            updateUser(currentId);
+        }else{
+            console.log('on add function');
+            userId=addUser(userId);
+        }
+        let modal = document.getElementById('staticBackdrop'); 
+        let closeButton = modal.querySelector('[data-bs-dismiss="modal"]')
+        closeButton.click()  
     }
     renderUsers()
 })
@@ -163,6 +177,7 @@ function updateUser(id){
             updatedEducation.push(educationObj)
         })
         users[index].education = updatedEducation;
+        alert('form updated successfully!')
     }
 }
 
@@ -220,6 +235,7 @@ function addUser(userId){
     }
 
     users.push(user);
+    alert('form created successfully!')
     userId++;
     return userId;
 }
@@ -273,3 +289,83 @@ document.addEventListener('click', function (event) {
 });
 
 renderUsers()
+
+function validateForm(){
+    console.log("inside validate")
+    const fname = document.getElementById('fname').value
+    const dob = document.getElementById('dob').value
+    const email = document.getElementById('email').value
+    const address = document.getElementById('address').value
+    const graduation = document.getElementById('graduation').value
+    // const degree = row.querySelector('.degreeInput').value;
+    // const college = row.querySelector('.collegeInput').value;
+    // const startDate = row.querySelector('.startDateInput').value;
+    // const passoutYear = row.querySelector('.passoutYearInput').value;
+    // const percentage = row.querySelector('.PercentageInput').value;
+    // const backlog = row.querySelector('.backlogInput').value;
+
+    let isValid = true;
+    const dobFormat = new Date(dob);
+    const gradYear = parseInt(graduation.slice(0,4))
+    const current = new Date();
+    const dobYear = dobFormat.getFullYear();
+    const currentYear = current.getFullYear();
+    const yearDiff = currentYear-dobYear;
+    const gradDiff = currentYear-gradYear;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    document.getElementById('fnameError').innerHTML=""
+    document.getElementById('dobError').innerHTML=""
+    document.getElementById('emailError').innerHTML=""
+    document.getElementById('addressError').innerHTML=""
+    document.getElementById('graduationError').innerHTML=""
+
+    // fname='';
+    // dob='';
+    // email='';
+    // address='';
+    // graduation='';
+    console.log(graduation)
+
+    if(fname.trim()==''){
+        document.getElementById('fnameError').innerHTML="First name can't be empty!";
+        isValid=false;
+    }
+
+    if(dob=='' ||  yearDiff<18){
+        document.getElementById('dobError').innerHTML="Min age should be 18!";
+        isValid=false;
+    }
+
+    if(email.trim()==''){
+        document.getElementById('emailError').innerHTML="Email can't be empty!";
+        isValid=false;
+    }else if(!emailRegex.test(email)){
+        document.getElementById('emailError').innerHTML="Email format is wrong!";
+        isValid=false;
+    }
+
+    if(address.trim()==''){
+        document.getElementById('addressError').innerHTML="Address can't be empty!";
+        isValid=false;
+    }
+    
+    // console.log(gradDiff)
+    // document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
+        
+    if(graduation==''){
+        document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
+        isValid=false;
+    }else if(gradDiff<0){
+        document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
+        isValid=false;
+    }
+
+    return isValid
+}
+
+function closeModal() {
+    // Close the modal programmatically
+    let modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+    modal.hide();
+}
