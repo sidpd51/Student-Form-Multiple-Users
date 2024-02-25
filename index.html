@@ -15,104 +15,139 @@
       <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+            <h1 class="modal-title fs-4 ps-3 fw-medium pb-1" id="staticBackdropLabel">Student Form</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
-            <div class="common-info">
-              <div class="container text-center fs-6">
-
-                <div class="row">
-                  <div class="col-lg-4 text-start">
-                    <label for="fname" class="fw-medium">First Name</label><br>
-                    <input type="text" id="fname" name="fname" value="" class="fnameInput w-100"><br>
-                    <span id="fnameError" class="error d-inline-block text-danger">sgsfdg</span>
+            <form id="my-form">
+              <div class="common-info">
+                <div class="container text-center fs-6">
+                  <div class="row">
+                    <div class="col-lg-4 text-start">
+                      <label for="fname" class="fw-medium">First Name</label><br>
+                      <input type="text" id="fname" name="fname" value="" class="fnameInput w-100 my-inputs"><br>
+                      <span id="fnameError" class="error d-inline-block text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 text-start">
+                      <label for="lname" class="fw-medium">Last Name</label><br>
+                      <input type="text" id="lname" name="lname" value="" class="w-100 my-inputs"><br>
+                    </div>
+                    <div class="col-lg-4 text-start">
+                      <label for="dob" class="fw-medium">Date Of Birth</label><br>
+                      <input type="date" id="dob" name="dob" value="" class="dobInput w-100 my-inputs"><br>
+                      <span id="dobError" class="error d-inline-block text-danger"></span>
+                    </div>
                   </div>
-                  <div class="col-lg-4 text-start">
-                    <label for="lname" class="fw-medium">Last Name</label><br>
-                    <input type="text" id="lname" name="lname" value="" class="w-100"><br>
-                  </div>
-                  <div class="col-lg-4 text-start">
-                    <label for="dob" class="fw-medium">Date Of Birth</label><br>
-                    <input type="date" id="dob" name="dob" value="" class="dobInput w-100"><br>
-                    <span id="dobError" class="error d-inline-block text-danger">adfasd</span>
-                  </div>
-                </div>
-
-
-                <div class="row">
-                  <div class="col-lg-4 text-start">
-                    <label for="Email" class="fw-medium">Email</label><br>
-                    <input type="email" id="Email" name="Email" value="" class="emailInput w-100"><br>
-                    <span id="emailError" class="error d-inline-block text-danger "></span>
-                  </div>
-                  <div class="col-lg-4 text-start">
-                    <label for="address" class="fw-medium">Address</label><br>
-                    <textarea  id="address" name="address" value="" class="addressInput w-100" cols="30" rows="1"></textarea><br>
-                    <span id="addressError" class="error d-inline-block text-danger "></span>
-                  </div>
-                  <div class="col-lg-4 text-start">
-                    <label for="graduation" class="fw-medium">Graduation Year</label><br>
-                    <input type="month" id="graduation" name="graduation" value="" class="graduationInput w-100"><br>
-                    <span id="graduationError" class="error d-inline-block text-danger "></span>
+                  <div class="row">
+                    <div class="col-lg-4 text-start">
+                      <label for="email" class="fw-medium">Email</label><br>
+                      <input type="email" id="email" name="email" value="" class="emailInput w-100 my-inputs"><br>
+                      <span id="emailError" class="error d-inline-block text-danger "></span>
+                    </div>
+                    <div class="col-lg-4 text-start">
+                      <label for="address" class="fw-medium">Address</label><br>
+                      <textarea  id="address" name="address" value="" class="addressInput w-100 my-inputs" cols="30" rows="1"></textarea><br>
+                      <span id="addressError" class="error d-inline-block text-danger "></span>
+                    </div>
+                    <div class="col-lg-4 text-start">
+                      <label for="graduation" class="fw-medium">Graduation Year</label><br>
+                      <input type="month" id="graduation" name="graduation" value="" class="graduationInput w-100 my-inputs"><br>
+                      <span id="graduationError" class="error d-inline-block text-danger "></span>
+                    </div>
                   </div>
                 </div>
-
               </div>
-            </div>
-            <div class="education-info mt-5 px-2">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class="table-dark ">
-                    <tr >
-                      <th scope="col" class="fw-medium">Degree/Board</th>
-                      <th scope="col" class="fw-medium">School/College</th>
-                      <th scope="col" class="fw-medium">Start Date</th>
-                      <th scope="col" class="fw-medium">Passout Year</th>
-                      <th scope="col" class="fw-medium">Percentage</th>
-                      <th scope="col" class="fw-medium">Backlog</th>
-                      <th scope="col" class="fw-medium">Add/Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbody-modal">
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td class="text-center"><i class=" plus-btn fa-regular fa-square-plus fa-xl cursor-pointer"></i></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <p class="h4 mt-3 px-2">Education:</p>
+              <div class="education-info px-2">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="table-dark ">
+                      <tr >
+                        <th scope="col" class="fw-medium">Degree/Board</th>
+                        <th scope="col" class="fw-medium">School/College</th>
+                        <th scope="col" class="fw-medium">Start Date</th>
+                        <th scope="col" class="fw-medium">Passout Year</th>
+                        <th scope="col" class="fw-medium">Percentage</th>
+                        <th scope="col" class="fw-medium">Backlog</th>
+                        <th scope="col" class="fw-medium">Add/Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-modal">
+                      <tr>
+                        <td class="pb-0 pt-3">
+                          <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs"><br>
+                          <span id="degreeError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs"><br>
+                          <span id="collegeError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs"><br>
+                          <span id="startDateError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs"><br>
+                          <span id="passoutYearError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01"><br>
+                          <span id="PercentageError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="number" id="backlog" name="backlog" value="" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any"><br>
+                          <span id="backlogError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td class="pb-0 pt-3">
+                          <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs" required><br>
+                          <span id="degreeError" class="error d-inline-block text-danger"></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs" required><br>
+                          <span id="collegeError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs" required><br>
+                          <span id="startDateError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs" required><br>
+                          <span id="passoutYearError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01" required><br>
+                          <span id="PercentageError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="pb-0 pt-3">
+                          <input type="number" id="backlog" name="backlog" value="" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any" required><br>
+                          <span id="backlogError" class="error d-inline-block text-danger "></span>
+                        </td>
+                        <td class="text-center pt-3"><i class=" plus-btn fa-regular fa-square-plus fa-xl cursor-pointer"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button id="dualActionBtn" type="submit" class="btn btn-primary toggle-update">Create</button>
           </div>
+
         </div>
       </div>
     </div>
 
     <main class="main my-5">
-        <div class="main-container w-50 mx-auto p-4 bg-body-tertiary rounded-3">
-            <div class="heading-wrapper d-flex justify-content-md-between align-items-center px-3 mb-4">
+        <div class="main-container w-75 mx-auto p-4 bg-body-tertiary rounded-3">
+            <div class="heading-wrapper d-flex justify-content-sm-between align-items-center px-3 mb-4">
                 <p class="h1 text-black text-decoration-underline text-center">Student form</p>
                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Form</button>
+                <button id="create-form" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Form</button>
             </div>
             <div class="table-responsive">
               <table class="table px-3">
@@ -124,12 +159,12 @@
                       <th scope="col">Email</th>
                       <th scope="col">D.O.B</th>
                       <th scope="col">Graduation</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">View</th>
                       <th scope="col">Delete</th>
                     </tr>
                   </thead>
                   <tbody id="tbody">
-                    
+                     
                   </tbody>
                 </table>
             </div>
