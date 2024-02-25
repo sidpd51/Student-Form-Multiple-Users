@@ -15,7 +15,7 @@
       <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Student Form</h1>
+            <h1 class="modal-title fs-4 ps-3 fw-medium pb-1" id="staticBackdropLabel">Student Form</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -61,7 +61,8 @@
 
               </div>
             </div>
-            <div class="education-info mt-5 px-2">
+            <p class="h4 mt-3 px-2">Education:</p>
+            <div class="education-info px-2">
               <div class="table-responsive">
                 <table class="table">
                   <thead class="table-dark ">
@@ -101,7 +102,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary create" data-bs-dismiss="modal">Update</button>
+            <button id="dualActionBtn" type="button" class="btn btn-primary toggle-update" data-bs-dismiss="modal">Create</button>
           </div>
         </div>
       </div>
@@ -112,7 +113,7 @@
             <div class="heading-wrapper d-flex justify-content-md-between align-items-center px-3 mb-4">
                 <p class="h1 text-black text-decoration-underline text-center">Student form</p>
                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Form</button>
+                <button id="create-form" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Form</button>
             </div>
             <div class="table-responsive">
               <table class="table px-3">
