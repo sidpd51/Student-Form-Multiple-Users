@@ -129,6 +129,8 @@ function updateUser(id){
     const updatedAddress = document.getElementById('address').value;
     const updatedGraduation = document.getElementById('graduation').value;
 
+
+
     const index = users.findIndex(user=> user.userId == id);
     if(index!== -1){
         users[index].fname= updatedFname;
@@ -137,6 +139,30 @@ function updateUser(id){
         users[index].email= updatedEmail;
         users[index].address= updatedAddress;
         users[index].graduation= updatedGraduation;
+
+        const educationRows = tbodyModal.querySelectorAll('tr')
+        const updatedEducation =[]
+
+        educationRows.forEach(row =>{
+            const degree = row.querySelector('.degreeInput').value;
+            const college = row.querySelector('.collegeInput').value;
+            const startDate = row.querySelector('.startDateInput').value;
+            const passoutYear = row.querySelector('.passoutYearInput').value;
+            const percentage = row.querySelector('.PercentageInput').value;
+            const backlog = row.querySelector('.backlogInput').value;
+
+            const educationObj = {
+                degree,
+                college,
+                startDate,
+                passoutYear,
+                percentage,
+                backlog
+            }
+
+            updatedEducation.push(educationObj)
+        })
+        users[index].education = updatedEducation;
     }
 }
 
@@ -144,7 +170,7 @@ function clearInputs(){
     console.log('clear inputs called')
     const inputFields = document.querySelectorAll('.my-inputs');
     inputFields.forEach(inputField=>{
-        console.log(inputField)
+        // console.log(inputField)
         inputField.value= ""
     })
 }
@@ -158,6 +184,30 @@ function addUser(userId){
     const address = document.getElementById('address').value
     const graduation = document.getElementById('graduation').value
 
+    const education = []
+    const educationRows= tbodyModal.querySelectorAll('tr')
+
+
+    educationRows.forEach( row => {
+        const degree = row.querySelector('.degreeInput').value;
+        const college = row.querySelector('.collegeInput').value;
+        const startDate = row.querySelector('.startDateInput').value;
+        const passoutYear = row.querySelector('.passoutYearInput').value;
+        const percentage = row.querySelector('.PercentageInput').value;
+        const backlog = row.querySelector('.backlogInput').value;
+
+        const educationObj = {
+            degree,
+            college,
+            startDate,
+            passoutYear,
+            percentage,
+            backlog
+        };
+        
+        education.push(educationObj);
+    })
+
     const user = {
         userId,
         fname,
@@ -165,7 +215,8 @@ function addUser(userId){
         dob,
         email,
         address,
-        graduation
+        graduation, 
+        education
     }
 
     users.push(user);
@@ -181,22 +232,39 @@ const minusBtn = document.querySelector('.minus-btn')
 plusBtn.addEventListener('click', function (){
     let newField = document.createElement('tr')
     newField.innerHTML=`
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td class="text-center"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
+        <td class="pb-0 pt-3">
+            <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs"><br>
+            <span id="degreeError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="pb-0 pt-3">
+            <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs"><br>
+            <span id="collegeError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="pb-0 pt-3">
+            <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs"><br>
+            <span id="startDateError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="pb-0 pt-3">
+            <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs"><br>
+            <span id="passoutYearError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="pb-0 pt-3">
+            <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01"><br>
+            <span id="PercentageError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="pb-0 pt-3">
+            <input type="number" id="backlog" name="backlog" value="0" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any"><br>
+            <span id="backlogError" class="error d-inline-block text-danger "></span>
+        </td>
+        <td class="text-center pt-3"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
      `
     tbodyModal.appendChild(newField);
-    updateUser()
 })
 
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('minus-btn')) {
         const row = event.target.closest('tr');
-        console.log(row);
+        // console.log(row);
         row.parentNode.removeChild(row);
 
         // You may want to update other things after removing the row
