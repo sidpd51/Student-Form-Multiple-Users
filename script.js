@@ -28,29 +28,31 @@ function renderUsers(){
             <td>${user.dob}</td>
             <td>${user.graduation}</td>
             <td><button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye fa-xl"></i></button></td>
-            <td><button class="btn"><i class="fa-regular fa-trash-can fa-xl text-danger delete-icon"></i></button></td>
+            <td><button class="btn delete-icon"><i class="fa-regular fa-trash-can fa-xl text-danger"></i></button></td>
         </tr>
         `
     })
     tbody.innerHTML= html;
 }
 
+// read and delete 
+
 tbody.addEventListener('click', function(event){
 
-    let target = event.target;
+    const target = event.target;
     console.log(target)
-    let tr = target.closest('tr')
+    const tr = target.closest('tr')
 
     if(!tr) return;
 
     if(!tbody.contains(tr)) return;
 
-    let th = tr.querySelector('th')
-    let id = parseInt(th.innerHTML)
+    const th = tr.querySelector('th')
+    const id = parseInt(th.innerHTML)
     // console.log(id)
-    console.log(users)
-
-    if(target.classList.contains('delete-icon')){
+    // console.log(users)
+    
+    if(target.closest('BUTTON').classList.contains('delete-icon')){
         console.log('inside delete')
         removeUser(id)
         console.log(users)
@@ -96,39 +98,7 @@ function removeUser(id){
 }
 
 
-
-const plusBtn = document.querySelector('.plus-btn')
-const minusBtn = document.querySelector('.minus-btn')
-
-plusBtn.addEventListener('click', function (){
-    let newField = document.createElement('tr')
-    newField.innerHTML=`
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td class="text-center"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
-     `
-    tbodyModal.appendChild(newField);
-    updateUsers()
-
-})
-
-document.addEventListener('click', function (event) {
-    if (event.target.classList.contains('minus-btn')) {
-        const row = event.target.closest('tr');
-        console.log(row);
-        row.parentNode.removeChild(row);
-
-        // You may want to update other things after removing the row
-        updateUser();
-    }
-});
-
-
-// logic calculations 
+// logic calculations create and update
 
 let toggleUpdate = document.querySelector('.toggle-update')
 let createForm = document.getElementById('create-form')
@@ -138,6 +108,8 @@ createForm.addEventListener('click', function(event){
     if(!isUpdating){
         document.getElementById('dualActionBtn').innerHTML= "Create";
     }
+    // for clearing inputs whenever we are creating a new form 
+    clearInputs()
 })
 
 toggleUpdate.addEventListener('click', function(event){
@@ -171,6 +143,15 @@ function updateUser(id){
     }
 }
 
+function clearInputs(){
+    console.log('clear inputs called')
+    const inputFields = document.querySelectorAll('.my-inputs');
+    inputFields.forEach(inputField=>{
+        console.log(inputField)
+        inputField.value= ""
+    })
+}
+
 function addUser(userId){
 
     const fname = document.getElementById('fname').value
@@ -195,11 +176,36 @@ function addUser(userId){
     return userId;
 }
 
+// form education 
 
+const plusBtn = document.querySelector('.plus-btn')
+const minusBtn = document.querySelector('.minus-btn')
 
+plusBtn.addEventListener('click', function (){
+    let newField = document.createElement('tr')
+    newField.innerHTML=`
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td class="text-center"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
+     `
+    tbodyModal.appendChild(newField);
+    updateUsers()
 
+})
 
+document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('minus-btn')) {
+        const row = event.target.closest('tr');
+        console.log(row);
+        row.parentNode.removeChild(row);
 
-
+        // You may want to update other things after removing the row
+        updateUser();
+    }
+});
 
 renderUsers()
