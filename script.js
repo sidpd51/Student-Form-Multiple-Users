@@ -65,9 +65,6 @@ tbody.addEventListener('click', function(event){
 function visitUser(id){
     isUpdating=true
     let viewUser = users.find(user=> user.userId==id);
-    // viewUser= viewUser[0]
-    // console.log(users)
-    // console.log(viewUser)
     
     if(isUpdating){
         document.getElementById('dualActionBtn').innerHTML= "Update";
@@ -193,8 +190,7 @@ plusBtn.addEventListener('click', function (){
         <td class="text-center"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
      `
     tbodyModal.appendChild(newField);
-    updateUsers()
-
+    updateUser()
 })
 
 document.addEventListener('click', function (event) {
