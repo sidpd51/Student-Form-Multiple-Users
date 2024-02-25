@@ -297,12 +297,6 @@ function validateForm(){
     const email = document.getElementById('email').value
     const address = document.getElementById('address').value
     const graduation = document.getElementById('graduation').value
-    // const degree = row.querySelector('.degreeInput').value;
-    // const college = row.querySelector('.collegeInput').value;
-    // const startDate = row.querySelector('.startDateInput').value;
-    // const passoutYear = row.querySelector('.passoutYearInput').value;
-    // const percentage = row.querySelector('.PercentageInput').value;
-    // const backlog = row.querySelector('.backlogInput').value;
 
     let isValid = true;
     const dobFormat = new Date(dob);
@@ -320,11 +314,6 @@ function validateForm(){
     document.getElementById('addressError').innerHTML=""
     document.getElementById('graduationError').innerHTML=""
 
-    // fname='';
-    // dob='';
-    // email='';
-    // address='';
-    // graduation='';
     console.log(graduation)
 
     if(fname.trim()==''){

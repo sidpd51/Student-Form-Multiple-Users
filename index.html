@@ -102,27 +102,27 @@
                       </tr>
                       <tr>
                         <td class="pb-0 pt-3">
-                          <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs"><br>
+                          <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs" required><br>
                           <span id="degreeError" class="error d-inline-block text-danger"></span>
                         </td>
                         <td class="pb-0 pt-3">
-                          <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs"><br>
+                          <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs" required><br>
                           <span id="collegeError" class="error d-inline-block text-danger "></span>
                         </td>
                         <td class="pb-0 pt-3">
-                          <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs"><br>
+                          <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs" required><br>
                           <span id="startDateError" class="error d-inline-block text-danger "></span>
                         </td>
                         <td class="pb-0 pt-3">
-                          <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs"><br>
+                          <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs" required><br>
                           <span id="passoutYearError" class="error d-inline-block text-danger "></span>
                         </td>
                         <td class="pb-0 pt-3">
-                          <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01"><br>
+                          <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01" required><br>
                           <span id="PercentageError" class="error d-inline-block text-danger "></span>
                         </td>
                         <td class="pb-0 pt-3">
-                          <input type="number" id="backlog" name="backlog" value="" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any"><br>
+                          <input type="number" id="backlog" name="backlog" value="" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any" required><br>
                           <span id="backlogError" class="error d-inline-block text-danger "></span>
                         </td>
                         <td class="text-center pt-3"><i class=" plus-btn fa-regular fa-square-plus fa-xl cursor-pointer"></i></td>
@@ -135,7 +135,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button id="dualActionBtn" type="button" class="btn btn-primary toggle-update">Create</button>
+            <button id="dualActionBtn" type="submit" class="btn btn-primary toggle-update">Create</button>
           </div>
 
         </div>
