@@ -1,21 +1,39 @@
-# Project Title
+# Student Form Management System
 
-## Overview
-Briefly describe the purpose and functionality of the project.
+This project is a web-based application that allows users to manage student information using a form interface. Users can create, view, update, and delete student records.
 
-## Table of Contents
-1. [Setup Instructions](#setup-instructions)
-2. [Usage Guide](#usage-guide)
-3. [Code Structure](#code-structure)
-4. [Dependencies](#dependencies)
-5. [Contributing Guidelines](#contributing-guidelines)
-6. [License Information](#license-information)
-7. [Contact Information](#contact-information)
+## Features
 
-## Setup Instructions
-Provide clear steps for setting up the project locally.
+- **Create:** Users can create new student records by filling out a form.
+- **View:** Users can view detailed information about each student record.
+- **Update:** Users can update existing student records.
+- **Delete:** Users can delete student records.
+- **Validation:** The form includes validation to ensure that required fields are filled out correctly.
+- **Education Information:** Users can input education details for each student, including degree, college, start date, passout year, percentage, and backlog.
 
-```bash
-# Example commands or code snippets for setup
-npm install
-npm start
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- Bootstrap 5
+
+## How to Use
+
+1. Clone the repository to your local machine.
+2. Open the `index.html` file in your web browser.
+3. Click on the "Create Form" button to open the modal for creating a new student record.
+4. Fill out the form with the necessary information.
+5. Click "Create" to submit the form and add the student record.
+6. To view, update, or delete existing student records, navigate through the table and use the corresponding buttons.
+
+## Screenshots
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+
