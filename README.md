@@ -28,12 +28,15 @@ This project is a web-based application that allows users to manage student info
 6. To view, update, or delete existing student records, navigate through the table and use the corresponding buttons.
 
 ## Screenshots
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](./img/image.png)
+![alt text](./img/image-1.png)
+![alt text](./img/image-2.png)
+![alt text](./img/image-3.png)
 
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+
+## Have a look
+ https://student-form-multiple-users-kds49ir5d-sidpd51s-projects.vercel.app/
 

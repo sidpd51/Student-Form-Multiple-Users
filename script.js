@@ -4,8 +4,8 @@ let userId=1;
 let currentId;
 
 const tbody = document.getElementById('tbody')
-const tbodyModal = document.getElementById('tbody-modal')
-
+const tbodyModal = document.getElementById('tbody-modal') 
+document.getElementById("fname").focus();
 
 
 function renderUsers(){
@@ -103,22 +103,17 @@ let createForm = document.getElementById('create-form')
 createForm.addEventListener('click', function(event){
     isUpdating=false
 
-    // let updateToggle = document.getElementById('dualActionBtn')
-    // updateToggle.removeAttribute('data-bs-dismiss')
-
     if(!isUpdating){
         document.getElementById('dualActionBtn').innerHTML= "Create";
     }
-    // for clearing inputs whenever we are creating a new form 
     clearInputs()
 })
 
 toggleUpdate.addEventListener('click', function(event){
     console.log(event.target)
-    if(validateForm()){
+    const Form = document.getElementById('my-form');
 
-        
-
+    if(validateForm() && Form.reportValidity()){
         console.log(event.target)
         if(isUpdating){
             console.log('on update function');
@@ -162,7 +157,7 @@ function updateUser(id){
             const college = row.querySelector('.collegeInput').value;
             const startDate = row.querySelector('.startDateInput').value;
             const passoutYear = row.querySelector('.passoutYearInput').value;
-            const percentage = row.querySelector('.PercentageInput').value;
+            const percentage = row.querySelector('.percentageInput').value;
             const backlog = row.querySelector('.backlogInput').value;
 
             const educationObj = {
@@ -208,7 +203,7 @@ function addUser(userId){
         const college = row.querySelector('.collegeInput').value;
         const startDate = row.querySelector('.startDateInput').value;
         const passoutYear = row.querySelector('.passoutYearInput').value;
-        const percentage = row.querySelector('.PercentageInput').value;
+        const percentage = row.querySelector('.percentageInput').value;
         const backlog = row.querySelector('.backlogInput').value;
 
         const educationObj = {
@@ -249,30 +244,30 @@ plusBtn.addEventListener('click', function (){
     let newField = document.createElement('tr')
     newField.innerHTML=`
         <td class="pb-0 pt-3">
-            <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs"><br>
+            <input type="text" id="degree" name="degree" value="" class="degreeInput w-100 my-inputs" required><br>
             <span id="degreeError" class="error d-inline-block text-danger "></span>
         </td>
         <td class="pb-0 pt-3">
-            <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs"><br>
+            <input type="text" id="college" name="college" value="" class="collegeInput w-100 my-inputs" required><br>
             <span id="collegeError" class="error d-inline-block text-danger "></span>
         </td>
         <td class="pb-0 pt-3">
-            <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs"><br>
+            <input type="month" id="startDate" name="startDate" value="" class="startDateInput w-100 my-inputs" required><br>
             <span id="startDateError" class="error d-inline-block text-danger "></span>
         </td>
         <td class="pb-0 pt-3">
-            <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs"><br>
+            <input type="month" id="passoutYear" name="passoutYear" value="" class="passoutYearInput w-100 my-inputs" required><br>
             <span id="passoutYearError" class="error d-inline-block text-danger "></span>
         </td>
         <td class="pb-0 pt-3">
-            <input type="number" id="Percentage" name="Percentage" value="" class="PercentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01"><br>
+            <input type="number" id="percentage" name="percentage" value="" class="percentageInput w-100 my-inputs" min="0" max="100" placeholder="Don't use % sign" step="0.01" required><br>
             <span id="PercentageError" class="error d-inline-block text-danger "></span>
         </td>
         <td class="pb-0 pt-3">
-            <input type="number" id="backlog" name="backlog" value="0" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any"><br>
+            <input type="number" id="backlog" name="backlog" value="0" class="backlogInput w-100 my-inputs" min="0" placeholder="If Any" required><br>
             <span id="backlogError" class="error d-inline-block text-danger "></span>
         </td>
-        <td class="text-center pt-3"><i class="minus-btn fa-regular fa-square-minus fa-xl"></i></i></td>
+        <td class="text-center pt-3"><i class="minus-btn fa-regular fa-square-minus fa-xl cursor-pointer"></i></i></td>
      `
     tbodyModal.appendChild(newField);
 })
@@ -280,27 +275,23 @@ plusBtn.addEventListener('click', function (){
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('minus-btn')) {
         const row = event.target.closest('tr');
-        // console.log(row);
         row.parentNode.removeChild(row);
-
-        // You may want to update other things after removing the row
-        updateUser();
     }
 });
 
 renderUsers()
 
 function validateForm(){
-    console.log("inside validate")
-    const fname = document.getElementById('fname').value
-    const dob = document.getElementById('dob').value
-    const email = document.getElementById('email').value
-    const address = document.getElementById('address').value
-    const graduation = document.getElementById('graduation').value
+    console.log("inside validate");
+    const fname = document.getElementById('fname').value;
+    const dob = document.getElementById('dob').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const graduation = document.getElementById('graduation').value;
 
     let isValid = true;
     const dobFormat = new Date(dob);
-    const gradYear = parseInt(graduation.slice(0,4))
+    const gradYear = parseInt(graduation.slice(0,4));
     const current = new Date();
     const dobYear = dobFormat.getFullYear();
     const currentYear = current.getFullYear();
@@ -308,49 +299,65 @@ function validateForm(){
     const gradDiff = currentYear-gradYear;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    document.getElementById('fnameError').innerHTML=""
-    document.getElementById('dobError').innerHTML=""
-    document.getElementById('emailError').innerHTML=""
-    document.getElementById('addressError').innerHTML=""
-    document.getElementById('graduationError').innerHTML=""
+    // reset 
+    document.getElementById('fnameError').innerHTML="";
+    document.getElementById('dobError').innerHTML="";
+    document.getElementById('emailError').innerHTML="";
+    document.getElementById('addressError').innerHTML="";
+    document.getElementById('graduationError').innerHTML="";
+    document.querySelector('.fnameInput').classList.remove('highlight');
+    document.querySelector('.dobInput').classList.remove('highlight');
+    document.querySelector('.emailInput').classList.remove('highlight');
+    document.querySelector('.addressInput').classList.remove('highlight');
+    document.querySelector('.graduationInput').classList.remove('highlight');
+    document.querySelector('.education-fields').classList.remove('highlight');
+
+
+    
 
     console.log(graduation)
 
     if(fname.trim()==''){
         document.getElementById('fnameError').innerHTML="First name can't be empty!";
+        document.querySelector('.fnameInput').classList.add('highlight');
         isValid=false;
     }
 
     if(dob=='' ||  yearDiff<18){
         document.getElementById('dobError').innerHTML="Min age should be 18!";
+        document.querySelector('.dobInput').classList.add('highlight');
         isValid=false;
     }
 
     if(email.trim()==''){
         document.getElementById('emailError').innerHTML="Email can't be empty!";
+        document.querySelector('.emailInput').classList.add('highlight');
         isValid=false;
     }else if(!emailRegex.test(email)){
         document.getElementById('emailError').innerHTML="Email format is wrong!";
+        document.querySelector('.emailInput').classList.add('highlight');
         isValid=false;
     }
 
     if(address.trim()==''){
         document.getElementById('addressError').innerHTML="Address can't be empty!";
+        document.querySelector('.addressInput').classList.add('highlight');
         isValid=false;
     }
     
-    // console.log(gradDiff)
-    // document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
-        
+        console.log(gradDiff)
     if(graduation==''){
         document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
+        document.querySelector('.graduationInput').classList.add('highlight');
         isValid=false;
-    }else if(gradDiff<0){
+    }else if(gradDiff<1){
+
         document.getElementById('graduationError').innerHTML="Graduation Year must be before current Year!";
+        document.querySelector('.graduationInput').classList.add('highlight');
         isValid=false;
     }
 
-    return isValid
+    return isValid;
 }
 
 function closeModal() {
